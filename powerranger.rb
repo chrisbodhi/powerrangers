@@ -1,3 +1,5 @@
+require './combat.rb'
+
 class Person
 attr_accessor :caffeine_level
 
@@ -28,22 +30,24 @@ end
 
 # Need to add comments for methods
 class PowerRanger < Person
-
-  def initialize(strength, color)
-    super
+include Combat #the module Combat from the combat.rb file
+  def initialize(name, strength, color)
+    super(name)
     @strength = strength
     @color = color
   end
 
-  def punch(person)
-    if @strength > 5
-      person.scream
-      person.run
-      @caffeine_level -= 1
-    end
-  end
+  # def punch(person)
+  #   if @strength > 5
+  #     person.scream
+  #     person.run
+  #     @caffeine_level -= 1
+  #   end
+  # end
 
   def rest
+    @strength += 2
+    puts "Whew. Strength now to #{@strength}."
   end
 
   def use_megazord(person)
@@ -54,23 +58,50 @@ class PowerRanger < Person
 end
 
 class EvilNinja < Person
-
-  def initialize(strength, evilness)
-    super
+include Combat #the module Combat from the combat.rb file
+  def initialize(name, strength, evilness)
+    super(name)
     @strength = strength
     @evilness = evilness
   end
 
-  def punch(person)
-    if @strength > 5
-      person.scream
-      person.run
-      @caffeine_level -= 1
-    end
-  end
+  # def punch(person)
+  #   if @strength > 5
+  #     person.scream
+  #     person.run
+  #     @caffeine_level -= 1
+  #   end
+  # end
 
   def cause_mayhem(person)
     @caffeine_level = 0
   end
 
 end
+
+def fight_scene
+  
+  bobby = PowerRanger.new('Bobby', 15, 'blue')
+  kim = PowerRanger.new('Kim', 25, 'pink')
+
+  hanzo = EvilNinja.new("Hanzo", 7, 100)
+  bill = EvilNinja.new("Bill", 17, 1000)
+
+  johndoe = Person.new("John Doe")
+  janedoe = Person.new("Jane Doe")
+
+  janedoe.drink_coffee
+  johndoe.drink_coffee
+
+  bill.punch(janedoe)
+  hanzo.punch(johndoe)
+
+  bobby.rest
+  kim.rest
+
+  kim.punch(hanzo)
+
+
+end
+
+fight_scene
