@@ -31,25 +31,22 @@ end
 # Need to add comments for methods
 class PowerRanger < Person
 include Combat #the module Combat from the combat.rb file
+
+# Initializes the instance, pulling the name variable assignment
+# from the Person parent class.
   def initialize(name, strength, color)
     super(name)
     @strength = strength
     @color = color
   end
 
-  # def punch(person)
-  #   if @strength > 5
-  #     person.scream
-  #     person.run
-  #     @caffeine_level -= 1
-  #   end
-  # end
-
+# Increases the strength by two points, reports the new strength level.
   def rest
     @strength += 2
     puts "Whew. Strength now to #{@strength}."
   end
 
+# Utter mayhem that, as a method, deserves to be fleshed out.
   def use_megazord(person)
     @strength = 5000
     punch(person)
@@ -59,26 +56,23 @@ end
 
 class EvilNinja < Person
 include Combat #the module Combat from the combat.rb file
+
+# Initializes the instance, pulling the name variable assignment
+# from the Person parent class.
   def initialize(name, strength, evilness)
     super(name)
     @strength = strength
     @evilness = evilness
   end
 
-  # def punch(person)
-  #   if @strength > 5
-  #     person.scream
-  #     person.run
-  #     @caffeine_level -= 1
-  #   end
-  # end
-
+# Drains a person's caffeine level to zero.
   def cause_mayhem(person)
     @caffeine_level = 0
   end
 
 end
 
+# Defines a method which creates instances of the classes and runs their methods.
 def fight_scene
   
   bobby = PowerRanger.new('Bobby', 15, 'blue')
@@ -101,7 +95,7 @@ def fight_scene
 
   kim.punch(hanzo)
 
-
 end
 
+# Calls the action method to create classes and run their methods.
 fight_scene
