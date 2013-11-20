@@ -1,4 +1,8 @@
-require './combat.rb'
+# Three different ways of loading the module from combat.rb.
+
+# require './combat'
+# require_relative 'combat'
+load './combat.rb'
 
 class Person
 attr_accessor :caffeine_level
